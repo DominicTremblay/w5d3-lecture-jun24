@@ -1,3 +1,6 @@
+DELETE FROM categories;
+DELETE FROM todos;
+
 INSERT INTO categories (category) VALUES ('entertainment');
 INSERT INTO categories (category) VALUES ('work');
 INSERT INTO categories (category) VALUES ('travel');

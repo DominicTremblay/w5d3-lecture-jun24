@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { formatTodosCat } = require('../utils/format_helpers');
 
 module.exports = DataHelpers => {
   router.get('/:id/todos', (req, res) => {
@@ -9,7 +10,7 @@ module.exports = DataHelpers => {
       if (err) {
         return res.json({ msg: err.message });
       }
-      res.status(200).json(todos);
+      res.status(200).json(formatTodosCat(todos));
     });
   });
 
