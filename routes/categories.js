@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { todosByCat } = require('../utils/data_helpers');
+const { todosByCat } = require('../utils/format_helpers');
 
 module.exports = pgClient => {
   router.get('/:id/todos', (req, res) => {
@@ -17,6 +17,7 @@ module.exports = pgClient => {
     // Executing the query using a promise
     pgClient
       .query(query)
+      // we are using todosByCat to reformat the output of the query
       .then(data => res.status(200).json(todosByCat(data.rows)))
       .catch(err => res.json({ msg: err.message }));
   });
